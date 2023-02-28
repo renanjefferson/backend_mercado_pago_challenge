@@ -1,6 +1,7 @@
 /* eslint-disable import/no-unresolved */
 import { configurations, payment } from 'mercadopago';
 import { PaymentCreateResponse } from 'mercadopago/resources/payment';
+import { ICreateBarCodeTransactionDTO } from '../../../../../dto/ICreateBarCodeTransactionDTO';
 import { IPaymentProvider } from '../IPaymentProvider';
 import AppError from '../../../../errors/AppError';
 
@@ -60,9 +61,38 @@ class MercadoPagoProvider implements IPaymentProvider {
     }
   }
 
-  // async barCode(): Promise<any> {
-  //   console.log('Card');
-  // }
+  async barCode({
+    transaction_amount,
+    description,
+    installments,
+    payment_method_id,
+    payer,
+  }): Promise<PaymentCreateResponse> {
+    const paymentData: ICreateBarCodeTransactionDTO = {
+      transaction_amount,
+      description,
+      installments,
+      payment_method_id,
+      payer: {
+        email: payer.email,
+        first_name: payer.first_name,
+        last_name: payer.last_name,
+        identification: {
+          type: payer.identification.type,
+          number: payer.identification.number,
+        },
+      },
+    };
+
+    try {
+      const transaction = await payment.save(paymentData);
+      const { response } = transaction;
+
+      return response;
+    } catch (error) {
+      throw new AppError(error.cause[0].description, error.status);
+    }
+  }
 }
 
 export { MercadoPagoProvider };

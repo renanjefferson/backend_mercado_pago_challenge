@@ -1,12 +1,12 @@
-interface ICreateCardTransactionDTO {
+interface ICreateBarCodeTransactionDTO {
   transaction_amount: number;
-  token: string;
   description: string;
   installments: number;
   payment_method_id: string;
-  issuer_id: string;
   payer: {
     email: string;
+    first_name: string;
+    last_name: string;
     identification: {
       type: string;
       number: string;
@@ -14,4 +14,4 @@ interface ICreateCardTransactionDTO {
   };
 }
 
-export { ICreateCardTransactionDTO };
+export { ICreateBarCodeTransactionDTO };

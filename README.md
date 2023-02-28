@@ -32,26 +32,26 @@ git clone https://github.com/renanjefferson/backend_mercado_pago_challenge.git
 ```
 <br/>
 
-- Entre no diretório backend_mercado_pago_challenge e abra o projeto no VSCode
+- Entre no diretório `backend_mercado_pago_challenge` e abra o projeto no VSCode
 - Digite: yarn install ou npm install (dependendo do gerenciador acima escolhido)
-- Crie e configure o arquivo '.env' na raíz do projeto com a Client Secret e Access Token da forma como está no arquivo '.env.example'
+- Crie e configure o arquivo '.env' na raíz do projeto com `CLIENT_ID`, `CLIENT_SECRET` e `ACCESS_TOKEN` da forma como está no arquivo '.env.example'
+ ```bash
+ CLIENT_ID="<SEU_CLIENT_ID>"
  ```
- CLIENT_ID=<SEU_CLIENT_ID>
+ ```bash
+ CLIENT_SECRET="<SEU_CLIENT_SECRET>"
  ```
- ```
- CLIENT_SECRET=<SEU_CLIENT_SECRET>
- ```
- ```
- ACCESS_TOKEN=<SEU_TOKEN_DE_ACESSO>
+ ```bash
+ ACCESS_TOKEN="<SEU_TOKEN_DE_ACESSO>"
  ```
  
  
 **Rodar a aplicação**
-```
+```bash
 yarn dev
 ```
 ou
-```
+```bash
 npm run dev
 ```
 

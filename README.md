@@ -57,7 +57,6 @@ npm run dev
 
 
 **Local**
-```
+
 Acesse [http://localhost:5000](http://localhost:5000) em seu navegador.
-```
 
